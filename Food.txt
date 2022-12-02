@@ -1,0 +1,7 @@
+Sausage, 2.74
+Grilled sausage, 2.75
+Sausage with fries, 25.00
+Grilled moose meat, 30.00
+Pizza, 9.95
+Macaron box, 11.95
+Potato chips,  14.95

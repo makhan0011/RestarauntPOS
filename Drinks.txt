@@ -1,0 +1,7 @@
+Beer, 8.00
+Booze, 6.00
+Coffee, 7.00
+Milk, 5.50
+Spirit, 9.00
+Water, 5.00
+Vodka shot, 3.00
