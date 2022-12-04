@@ -221,6 +221,10 @@ public class FastFood extends JPanel{
 				
 				//JOptionPane.showMessageDialog(null, total);
 				subtotal_user.setText(Integer.toString(total));
+				double taxes=total*.0884;
+				tax_user.setText(String.format("%.2f",taxes));
+				total_user.setText(String.format("%.2f",taxes+total));
+				
 			}
 	    }
 	    
