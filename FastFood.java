@@ -150,14 +150,16 @@ public class FastFood extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				int inputP=0;
 				int inputHB = 0;
-				int total=0;
+				int subsubtotal=0;
+				int subtotal=0;
+				int[] food= new int[10];
 				
 				
 				
 				if(pancake.isSelected()) {
 					if(hashBrown_user.getText()!=null&& hashBrown_user.getText().matches("[0-9.]+")) {
 					inputP=Integer.parseInt(pancake_user.getText());
-					total+=inputP;
+					food[0]=inputP;
 				}
 				}
 
@@ -165,65 +167,67 @@ public class FastFood extends JPanel{
 					if(hashBrown_user.getText()!=null&& hashBrown_user.getText().matches("[0-9.]+")) {
 					
 					inputHB=Integer.parseInt(hashBrown_user.getText());
-					total+=inputHB;
+					food[1]=inputHB;
 				}
 				}
 				if (hamburger.isSelected()) {
 					if(hamburger_user.getText()!=null&& hamburger_user.getText().matches("[0-9.]+")) {
 						
 						
-						total+=Integer.parseInt(hamburger_user.getText());}
+						food[2]=Integer.parseInt(hamburger_user.getText());}
 				}
 				if (hotdog.isSelected()) {
                         if(hotdog_user.getText()!=null&& hotdog_user.getText().matches("[0-9.]+")) {
 						
 						
-						total+=Integer.parseInt(hotdog_user.getText());}
+						food[3]=Integer.parseInt(hotdog_user.getText());}
 				}
 				if (icecream.isSelected()) {
                     if(icecream_user.getText()!=null&& icecream_user.getText().matches("[0-9.]+")) {
-						total+=Integer.parseInt(icecream_user.getText());
+						food[4]=Integer.parseInt(icecream_user.getText());
                     }
 					
 				}
 				if (water.isSelected()) {
 					if(water_user.getText()!=null&& water_user.getText().matches("[0-9.]+")) {
-						total+=Integer.parseInt(water_user.getText());
+						food[5]=Integer.parseInt(water_user.getText());
                     }
 					
 				}
 				if (soda.isSelected()) {
 					if(soda_user.getText()!=null&& soda_user.getText().matches("[0-9.]+")) {
-						total+=Integer.parseInt(soda_user.getText());
+						food[6]=Integer.parseInt(soda_user.getText());
                     }
 					
 				}
 				if (coffee.isSelected()) {
 					if(coffee_user.getText()!=null&& coffee_user.getText().matches("[0-9.]+")) {
-						total+=Integer.parseInt(coffee_user.getText());
+						food[7]=Integer.parseInt(coffee_user.getText());
                     }
 					
 				}
 				if (orangeJuice.isSelected()) {
 					if(orangeJuice_user.getText()!=null&& orangeJuice_user.getText().matches("[0-9.]+")) {
-						total+=Integer.parseInt(orangeJuice_user.getText());
+						food[8]=Integer.parseInt(orangeJuice_user.getText());
                     }
 					
 				}
 				if (vodka.isSelected()) {
 					if(vodka_user.getText()!=null&& vodka_user.getText().matches("[0-9.]+")) {
-						total+=Integer.parseInt(vodka_user.getText());
+						food[9]=Integer.parseInt(vodka_user.getText());
                     }
 					
 				}
-				
+				for (int i=0; i<food.length;i++) {
+					subsubtotal+=food[i];
+				}
 				//total=inputP+inputHB;
 				
 				//JOptionPane.showMessageDialog(null, total);
-				subtotal_user.setText(Integer.toString(total));
-				double taxes=total*.0884;
+				subtotal_user.setText(Integer.toString(subtotal));
+				double taxes=subtotal*.0884;
 				tax_user.setText(String.format("%.2f",taxes));
-				total_user.setText(String.format("%.2f",taxes+total));
+				total_user.setText(String.format("%.2f",taxes+subtotal));
 				
 			}
 	    }
