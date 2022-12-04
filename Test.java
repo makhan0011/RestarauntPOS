@@ -48,11 +48,19 @@ public class Test extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			int inputP;
 			int inputHB;
-			int total;
-			
+			int total=0;
 			inputP=Integer.parseInt(pancake_user.getText());
 			inputHB=Integer.parseInt(hashBrown_user.getText());
-			total=inputP+inputHB;
+			
+			if(pancake.isSelected()) {
+				total+=inputP;
+			}
+
+			if(hash_Browns.isSelected()) {
+				total+=inputHB;
+			}
+			
+			//total=inputP+inputHB;
 			
 			JOptionPane.showMessageDialog(null, total);
 		}
