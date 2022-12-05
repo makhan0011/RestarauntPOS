@@ -3,6 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 
 public class FastFood extends JPanel{
@@ -36,6 +39,16 @@ public class FastFood extends JPanel{
 	    private JTextField soda_user;
 	    private JLabel jcomp29;
 	    private JLabel jcomp30;
+	    private JTextField psubtotal;
+    private JTextField hbsubtotal;
+    private JTextField hamsubtotal;
+    private JTextField hdsubtotal;
+    private JTextField icsubtotal;
+    private JTextField wsubtotal;
+    private JTextField ssubtotal;
+    private JTextField csubtotal;
+    private JTextField osubtotal;
+    private JTextField vsubtotal;
 
 	    public FastFood() {
 	        //construct components
@@ -69,11 +82,31 @@ public class FastFood extends JPanel{
 	        soda_user = new JTextField (5);
 	        jcomp29 = new JLabel ("Food");
 	        jcomp30 = new JLabel ("Beverages");
+		            psubtotal = new JTextField(5);
+        hbsubtotal = new JTextField(5);
+        hamsubtotal = new JTextField(5);
+        hdsubtotal = new JTextField(5);
+        icsubtotal = new JTextField(5);
+        wsubtotal = new JTextField(5);
+        ssubtotal = new JTextField(5);
+        csubtotal = new JTextField(5);
+        osubtotal = new JTextField(5);
+        vsubtotal = new JTextField(5);
 
 	        //set components properties
 	        subtotal_user.setEnabled (false);
 	        tax_user.setEnabled (false);
 	        total_user.setEnabled (false);
+		            psubtotal.setEnabled(false);
+        hbsubtotal.setEnabled(false);
+        hamsubtotal.setEnabled(false);
+        hdsubtotal.setEnabled(false);
+        icsubtotal.setEnabled(false);
+        wsubtotal.setEnabled(false);
+        ssubtotal.setEnabled(false);
+        csubtotal.setEnabled(false);
+        osubtotal.setEnabled(false);
+        vsubtotal.setEnabled(false);
 
 	        //adjust size and set layout
 	        setPreferredSize (new Dimension (752, 430));
@@ -110,7 +143,18 @@ public class FastFood extends JPanel{
 	        add (soda_user);
 	        add (jcomp29);
 	        add (jcomp30);
-	        calculate_Total.addActionListener(new CalcButtonListener());
+        add(psubtotal);
+        add(hbsubtotal);
+        add(hamsubtotal);
+        add(hdsubtotal);
+        add(icsubtotal);
+        add(wsubtotal);
+        add(ssubtotal);
+        add(csubtotal);
+        add(osubtotal);
+        add(vsubtotal);
+        calculate_Total.addActionListener(new CalcButtonListener());
+        print_Receipt.addActionListener(new PrintReceiptListener());
 
 	        //set component bounds (only needed by Absolute Positioning)
 	        hash_Browns.setBounds (30, 110, 100, 25);
@@ -143,6 +187,16 @@ public class FastFood extends JPanel{
 	        soda_user.setBounds (455, 110, 100, 25);
 	        jcomp29.setBounds (35, 45, 205, 30);
 	        jcomp30.setBounds (355, 50, 100, 25);
+		            psubtotal.setBounds(240, 80, 100, 25);
+        hbsubtotal.setBounds(240, 110, 100, 25);
+        hamsubtotal.setBounds(240, 145, 100, 25);
+        hdsubtotal.setBounds(240, 175, 100, 25);
+        icsubtotal.setBounds(240, 205, 100, 25);
+        wsubtotal.setBounds(560, 80, 100, 25);
+        ssubtotal.setBounds(560, 110, 100, 25);
+        csubtotal.setBounds(560, 140, 100, 25);
+        osubtotal.setBounds(560, 170, 100, 25);
+        vsubtotal.setBounds(560, 200, 100, 25);
 	    }
 
 	    
@@ -150,6 +204,15 @@ public class FastFood extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				int inputP=0;
 				int inputHB = 0;
+				            int inputH = 0;
+            int inputHD = 0;
+            int inputIC = 0;
+            int inputW = 0;
+            int inputS = 0;
+            int inputC = 0;
+            int inputOJ = 0;
+            int inputV = 0;
+            int total = 0;
 				int subsubtotal=0;
 				int subtotal=0;
 				int[] food= new int[10];
@@ -157,9 +220,13 @@ public class FastFood extends JPanel{
 				
 				
 				if(pancake.isSelected()) {
-					if(hashBrown_user.getText()!=null&& hashBrown_user.getText().matches("[0-9.]+")) {
+                if (pancake_user.getText() != null && pancake_user.getText().matches("[0-9.]+")) {
 					inputP=Integer.parseInt(pancake_user.getText());
 					food[0]=inputP;
+			                    if (!psubtotal.getText().isEmpty()) {
+                        mult *= Integer.parseInt(pancake_user.getText());                    
+                    }
+                    psubtotal.setText(String.valueOf(mult));
 				}
 				}
 
@@ -231,6 +298,27 @@ public class FastFood extends JPanel{
 				
 			}
 	    }
+	
+	    private class PrintReceiptListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String subtotal = subtotal_user.getText();
+            String tax = tax_user.getText();
+            String total = total_user.getText();
+
+            String output = "Subtotal: " + subtotal + "Tax: " + tax + "Total: " + total;
+
+            try {
+                String outputFile = null;
+                try ( BufferedWriter write = new BufferedWriter(new FileWriter(outputFile, true))) {
+                    write.append(output);
+                }
+            } catch (IOException e) {
+                System.err.println("Error outputting to file.");
+            }
+        }
+    }
 	    
 	    
 	    public static void main (String[] args) {
