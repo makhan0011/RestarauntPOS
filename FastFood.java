@@ -310,7 +310,7 @@ public class FastFood extends JPanel{
             String output = "Subtotal: " + subtotal + "Tax: " + tax + "Total: " + total;
 
             try {
-                String outputFile = null;
+                String outputFile = "receipt.txt";;
                 try ( BufferedWriter write = new BufferedWriter(new FileWriter(outputFile, true))) {
                     write.append(output);
                 }
