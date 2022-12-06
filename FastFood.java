@@ -370,18 +370,47 @@ public class FastFood extends JPanel{
             String subtotal = subtotal_user.getText();
             String tax = tax_user.getText();
             String total = total_user.getText();
-
-            String output = "Subtotal: " + subtotal + " Tax: " + tax + " Total: " + total;
-
             try {
                 String outputFile = "receipt.txt";
                 try ( BufferedWriter write = new BufferedWriter(new FileWriter(outputFile, true))) {
-                    write.append(output);
+                    write.write("******Thank you******\n");
+                    if (!pancake_user.getText().isEmpty()) {
+                        write.write("Pancakes ... " + pancake_user.getText() + '\n');
+                    }
+                    if (!hashBrown_user.getText().isEmpty()) {
+                        write.write("Hash Browns ... " + hashBrown_user.getText() + '\n');
+                    }
+                    if (!hamburger_user.getText().isEmpty()) {
+                        write.write("Hamburger ... " + hamburger_user.getText() + '\n');
+                    }
+                    if (!hotdog_user.getText().isEmpty()) {
+                        write.write("Hot Dog ... " + hotdog_user.getText() + '\n');
+                    }
+                    if (!icecream_user.getText().isEmpty()) {
+                        write.write("Ice Cream ... " + icecream_user.getText() + '\n');
+                    }
+                    if (!water_user.getText().isEmpty()) {
+                        write.write("Water ... " + water_user.getText() + '\n');
+                    }
+                    if (!soda_user.getText().isEmpty()) {
+                        write.write("Soda ... " + soda_user.getText() + '\n');
+                    }
+                    if (!coffee_user.getText().isEmpty()) {
+                        write.write("Coffee ... " + coffee_user.getText() + '\n');
+                    }
+                    if (!orangeJuice_user.getText().isEmpty()) {
+                        write.write("OJ ... " + orangeJuice_user.getText() + '\n');
+                    }
+                    if (!horchata_user.getText().isEmpty()) {
+                        write.write("Horchata ... " + horchata_user.getText() + '\n');
+                    }
+                    write.write("Subtotal: " + subtotal + " Tax: " + tax + " Total: " + total + '\n');
+                    write.write("*****Thank you******\n");
                     System.out.println(System.getProperty("user.dir"));
                 }
             } catch (IOException e) {
                 System.err.println("Error outputting to file.");
-            }  
+            }
         }
     }
 	    
