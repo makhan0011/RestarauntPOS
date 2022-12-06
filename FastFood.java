@@ -363,24 +363,25 @@ public class FastFood extends JPanel{
 			}
 	    }
 	
-	    private class PrintReceiptListener implements ActionListener {
+    private class PrintReceiptListener implements ActionListener {
 
-        @Override
         public void actionPerformed(ActionEvent ae) {
+
             String subtotal = subtotal_user.getText();
             String tax = tax_user.getText();
             String total = total_user.getText();
 
-            String output = "Subtotal: " + subtotal + "Tax: " + tax + "Total: " + total;
+            String output = "Subtotal: " + subtotal + " Tax: " + tax + " Total: " + total;
 
             try {
-                String outputFile = "receipt.txt";;
+                String outputFile = "receipt.txt";
                 try ( BufferedWriter write = new BufferedWriter(new FileWriter(outputFile, true))) {
                     write.append(output);
+                    System.out.println(System.getProperty("user.dir"));
                 }
             } catch (IOException e) {
                 System.err.println("Error outputting to file.");
-            }
+            }  
         }
     }
 	    
