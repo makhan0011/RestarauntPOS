@@ -256,11 +256,10 @@ public class FastFood extends JPanel{
 				}
 				if (hamburger.isSelected()) {
 					if(hamburger_user.getText()!=null&& hamburger_user.getText().matches("[0-9.]+")) {
-						
-						food[2]=Integer.parseInt(hamburger_user.getText());}
+						food[2]=Integer.parseInt(hamburger_user.getText());
 				        double subHam=Integer.parseInt(hamburger_user.getText())*12.99;
 				        hamsubtotal.setText(String.format("%.2f",subHam));
-				        subtotal+=subHam;
+				        subtotal+=subHam;}
 				}
 				if (hotdog.isSelected()) {
                         if(hotdog_user.getText()!=null&& hotdog_user.getText().matches("[0-9.]+")) {
@@ -423,5 +422,3 @@ public class FastFood extends JPanel{
 	        frame.setVisible (true);
 	    }
 	}
-
-
